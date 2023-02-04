@@ -18,7 +18,7 @@ namespace RestServer.Models
             {
                 if (customers[i].isValid())
                 {
-                    SORTED_LIST.Add(customers[i].getLastName() + "~" + customers[i].getFirstName(), customers[i]);
+                    SORTED_LIST.Add(customers[i].lastName + "~" + customers[i].firstName, customers[i]);
                 }
             }
         }
@@ -27,10 +27,10 @@ namespace RestServer.Models
 
     public class Customer
     {
-        String firstName = "";
-        String lastName = "";
-        int age = 0;
-        int id = 0;
+        public String firstName { get; set; }
+        public String lastName { get; set; }
+        public int age { get; set; }
+        public int id { get; set; }
 
         public bool isValid()
         {
@@ -38,7 +38,7 @@ namespace RestServer.Models
             {
                 foreach (Customer entry in Store.SORTED_LIST.Values)
                 {
-                    if(entry.id == this.id)
+                    if (entry.id == this.id)
                     {
                         return false;
                     }
@@ -47,16 +47,5 @@ namespace RestServer.Models
 
             return true;
         }
-
-        public String getFirstName ()
-        {
-            return this.firstName;
-        }
-
-        public String getLastName()
-        {
-            return this.firstName;
-        }
     }
-
 }

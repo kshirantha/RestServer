@@ -24,8 +24,9 @@ namespace RestServer.Controllers
         // POST api/values
         public void Post([FromBody] string value)
         {
-            List<Customer> customer = JsonConvert.DeserializeObject<List<Customer>>(value);
-
+            value = "[\r\n{\r\nfirstName: \"Kasun\",\r\nlastName: \"Wanniarachchi\",\r\nage: 20,\r\nid: 5\r\n},\r\n{\r\nfirstName: \"Jayani\",\r\nlastName: \"Dasanayake\",\r\nage: 20,\r\nid: 6\r\n},\r\n{\r\nfirstName: \"Sanath\",\r\nlastName: \"Jayasuriaya\",\r\nage: 20,\r\nid: 7\r\n}\r\n]";
+            List<Customer> customers = JsonConvert.DeserializeObject<List<Customer>>(value);
+            Store.StoreCustomer(customers);
         }
 
         // PUT api/values/5
